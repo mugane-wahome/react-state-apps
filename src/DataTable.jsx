@@ -60,6 +60,24 @@ return(
                 <TableCell>Actions</TableCell>
             </TableRow>
         </TableHead>
+
+        <TableBody>
+            {data.map((item)=>(
+                <TableRow key={item.id}>
+                    <TableCell>{item.name}</TableCell>
+                    <TableCell>{item.gender}</TableCell>
+                    <TableCell>{item.age}</TableCell>
+                    <TableCell>
+                        <IconButton onClick={()=>handleEdit(item)}>
+                            <Edit/>
+                        </IconButton>
+                        <IconButton onClick={()=>handleDelete(item.id)}>
+                            <delete/>
+                        </IconButton>
+                    </TableCell>
+                </TableRow>
+            ))}
+        </TableBody>
     </Table>
 </TableContainer>
 
