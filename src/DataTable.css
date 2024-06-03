@@ -5,3 +5,7 @@
     font-family: 'Comic Sans MS', sans-serif;
     background-color: #f9f9f9;
   }
+
+  .MuiTableHead-root {
+    background-color: #ffcc00;
+  }
