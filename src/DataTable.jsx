@@ -42,7 +42,8 @@ const handleUpdate =(id)=>{
 }
 
 const handleChange =()=>{
-    
+    const {name, value} = e.target;
+    setFormDta
 }
 
 }
