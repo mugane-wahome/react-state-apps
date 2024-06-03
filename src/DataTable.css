@@ -1,39 +1,103 @@
-/* General table styling */
-.MuiTable-root {
+/* src/DataTable.css */
+
+/* Light theme variables */
+:root {
+    --bg-color: #f9f9f9;
+    --header-bg-color: #ffcc00;
+    --header-text-color: #fff;
+    --body-bg-color: #fff7e6;
+    --row-odd-bg-color: #ffedcc;
+    --text-color: #000;
+    --button-bg-color: #00b0ff;
+    --button-hover-bg-color: #0080ff;
+    --icon-color: #ff4081;
+    --icon-hover-bg-color: rgba(255, 64, 129, 0.1);
+  }
+  
+  /* Dark theme variables */
+  [data-theme='dark'] {
+    --bg-color: #333;
+    --header-bg-color: #444;
+    --header-text-color: #eee;
+    --body-bg-color: #555;
+    --row-odd-bg-color: #666;
+    --text-color: #fff;
+    --button-bg-color: #00aaff;
+    --button-hover-bg-color: #0088cc;
+    --icon-color: #ff80ab;
+    --icon-hover-bg-color: rgba(255, 128, 171, 0.1);
+  }
+  
+  /* General table styling */
+  .MuiTable-root {
     width: 100%;
     border-collapse: collapse;
     font-family: 'Comic Sans MS', sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--bg-color);
+    color: var(--text-color);
   }
-
-  .MuiTableHead-root {
-    background-color: #ffcc00;
-  }
-
   
-.MuiTableCell-head {
+  /* Table header styling */
+  .MuiTableHead-root {
+    background-color: var(--header-bg-color);
+  }
+  
+  .MuiTableCell-head {
     font-weight: bold;
     font-size: 18px;
-    color: #fff;
+    color: var(--header-text-color);
     text-align: center;
     border: 1px solid #f0a500;
   }
-
+  
   /* Table body styling */
-.MuiTableBody-root {
-    background-color: #fff7e6;
+  .MuiTableBody-root {
+    background-color: var(--body-bg-color);
   }
-
+  
   .MuiTableCell-body {
     font-size: 16px;
     text-align: center;
     border: 1px solid #f0a500;
   }
-
+  
+  /* Alternate row colors */
+  .MuiTableRow-root:nth-of-type(odd) {
+    background-color: var(--row-odd-bg-color);
+  }
+  
+  /* Form row styling */
+  form {
+    background-color: var(--body-bg-color);
+  }
+  
+  .MuiTableRow-root:last-child .MuiTableCell-root {
+    padding: 10px;
+  }
+  
+  .MuiTextField-root {
+    margin: 0 10px;
+  }
+  
+  /* Button styling */
   .MuiButton-root {
-    background-color: #00b0ff;
-    color: #fff;
+    background-color: var(--button-bg-color);
+    color: var(--header-text-color);
     font-weight: bold;
     margin: 5px;
     padding: 5px 10px;
   }
+  
+  .MuiButton-root:hover {
+    background-color: var(--button-hover-bg-color);
+  }
+  
+  /* Icon button styling */
+  .MuiIconButton-root {
+    color: var(--icon-color);
+  }
+  
+  .MuiIconButton-root:hover {
+    background-color: var(--icon-hover-bg-color);
+  }
+  

@@ -1,5 +1,4 @@
 // src/DataTable.jsx
-
 import React, { useState } from 'react';
 import {
   Table,
@@ -11,10 +10,12 @@ import {
   Paper,
   Button,
   TextField,
-  IconButton
+  IconButton,
+  Switch,
+  FormControlLabel
 } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
-import '../src/DataTable.css'
+import './DataTable.css'; // Import the CSS file
 
 const DataTable = () => {
   const [data, setData] = useState([
@@ -24,100 +25,107 @@ const DataTable = () => {
 
   const [isEditing, setIsEditing] = useState(null);
   const [formData, setFormData] = useState({ id: null, name: '', gender: '', age: '' });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Function to handle adding a new row
   const handleAdd = () => {
     setData([...data, { ...formData, id: data.length + 1 }]);
     setFormData({ id: null, name: '', gender: '', age: '' });
   };
 
-  // Function to handle deleting a row
   const handleDelete = (id) => {
     setData(data.filter(item => item.id !== id));
   };
 
-  // Function to handle editing a row
   const handleEdit = (item) => {
     setIsEditing(item.id);
     setFormData(item);
   };
 
-  // Function to handle updating a row
   const handleUpdate = () => {
     setData(data.map(item => (item.id === formData.id ? formData : item)));
     setIsEditing(null);
     setFormData({ id: null, name: '', gender: '', age: '' });
   };
 
-  // Function to handle changes in the form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.setAttribute('data-theme', isDarkMode ? 'light' : 'dark');
+  };
+
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Gender</TableCell>
-            <TableCell>Age</TableCell>
-            <TableCell>Actions</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((item) => (
-            <TableRow key={item.id}>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.gender}</TableCell>
-              <TableCell>{item.age}</TableCell>
+    <div>
+      <FormControlLabel
+        control={<Switch checked={isDarkMode} onChange={toggleTheme} />}
+        label="Dark Mode"
+      />
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Gender</TableCell>
+              <TableCell>Age</TableCell>
+              <TableCell>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.gender}</TableCell>
+                <TableCell>{item.age}</TableCell>
+                <TableCell>
+                  <IconButton onClick={() => handleEdit(item)}>
+                    <Edit />
+                  </IconButton>
+                  <IconButton onClick={() => handleDelete(item.id)}>
+                    <Delete />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+            <TableRow>
               <TableCell>
-                <IconButton onClick={() => handleEdit(item)}>
-                  <Edit />
-                </IconButton>
-                <IconButton onClick={() => handleDelete(item.id)}>
-                  <Delete />
-                </IconButton>
+                <TextField
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name"
+                />
+              </TableCell>
+              <TableCell>
+                <TextField
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  placeholder="Gender"
+                />
+              </TableCell>
+              <TableCell>
+                <TextField
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                  placeholder="Age"
+                />
+              </TableCell>
+              <TableCell>
+                {isEditing ? (
+                  <Button onClick={handleUpdate}>Update</Button>
+                ) : (
+                  <Button onClick={handleAdd}>Add</Button>
+                )}
               </TableCell>
             </TableRow>
-          ))}
-          <TableRow>
-            <TableCell>
-              <TextField
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                placeholder="Gender"
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-                placeholder="Age"
-              />
-            </TableCell>
-            <TableCell>
-              {isEditing ? (
-                <Button onClick={handleUpdate}>Update</Button>
-              ) : (
-                <Button onClick={handleAdd}>Add</Button>
-              )}
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 
