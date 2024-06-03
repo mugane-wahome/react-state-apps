@@ -25,7 +25,7 @@ const DataTable = () => {
 
   const [isEditing, setIsEditing] = useState(null);
   const [formData, setFormData] = useState({ id: null, name: '', gender: '', age: '' });
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const handleAdd = () => {
     setData([...data, { ...formData, id: data.length + 1 }]);
