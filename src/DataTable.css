@@ -9,3 +9,12 @@
   .MuiTableHead-root {
     background-color: #ffcc00;
   }
+
+  
+.MuiTableCell-head {
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #f0a500;
+  }
