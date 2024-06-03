@@ -9,7 +9,8 @@ import{
     Paper,
     Button,
     Textfield,
-    IconButton
+    IconButton,
+    TextField
 } from '@mui/material';
 import {Edit,Delete} from '@mui/icons-material';
 
@@ -77,6 +78,33 @@ return(
                     </TableCell>
                 </TableRow>
             ))}
+            <TableRow>
+                <TableCell>
+                    <Textfield
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Name"
+                    />
+
+                </TableCell>
+                <TableCell>
+                    <Textfield
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    placeholder="Gender"
+                    />
+                    </TableCell>
+                    <TableCell>
+                        <TextField
+                        name="age"
+                        value={formData.age}
+                        onChange={handleChange}
+                        placeholder="Age"
+                        />
+                    </TableCell>
+            </TableRow>
         </TableBody>
     </Table>
 </TableContainer>
