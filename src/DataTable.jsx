@@ -124,3 +124,5 @@ return(
 
 
 }
+
+export default DataTable;
