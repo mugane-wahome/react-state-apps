@@ -23,26 +23,31 @@ const DataTable = () => {
   const [isEditing, setIsEditing] = useState(null);
   const [formData, setFormData] = useState({ id: null, name: '', gender: '', age: '' });
 
+  // Function to handle adding a new row
   const handleAdd = () => {
     setData([...data, { ...formData, id: data.length + 1 }]);
     setFormData({ id: null, name: '', gender: '', age: '' });
   };
 
+  // Function to handle deleting a row
   const handleDelete = (id) => {
     setData(data.filter(item => item.id !== id));
   };
 
+  // Function to handle editing a row
   const handleEdit = (item) => {
     setIsEditing(item.id);
     setFormData(item);
   };
 
+  // Function to handle updating a row
   const handleUpdate = () => {
     setData(data.map(item => (item.id === formData.id ? formData : item)));
     setIsEditing(null);
     setFormData({ id: null, name: '', gender: '', age: '' });
   };
 
+  // Function to handle changes in the form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
