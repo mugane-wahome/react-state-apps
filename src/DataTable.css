@@ -23,3 +23,9 @@
 .MuiTableBody-root {
     background-color: #fff7e6;
   }
+
+  .MuiTableCell-body {
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #f0a500;
+  }
