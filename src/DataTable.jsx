@@ -104,29 +104,19 @@ return(
                         placeholder="Age"
                         />
                     </TableCell>
+                    <TableCell>
+                        {isEditing?(
+                            <Button onClick={handleUpdate}>Update</Button>
+                        ):
+                        (
+                            <button onClick={handleAdd}>Add</button>
+                        )
+                        }
+                    </TableCell>
             </TableRow>
         </TableBody>
     </Table>
 </TableContainer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
