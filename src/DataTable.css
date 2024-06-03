@@ -1,0 +1,7 @@
+/* General table styling */
+.MuiTable-root {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: #f9f9f9;
+  }

@@ -1,4 +1,5 @@
 // src/DataTable.jsx
+
 import React, { useState } from 'react';
 import {
   Table,
@@ -13,6 +14,7 @@ import {
   IconButton
 } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
+import '../src/DataTable.css'
 
 const DataTable = () => {
   const [data, setData] = useState([
