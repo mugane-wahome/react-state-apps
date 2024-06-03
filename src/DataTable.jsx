@@ -54,7 +54,10 @@ return(
     <Table>
         <TableHead>
             <TableRow>
-                
+                <TableCell>Name</TableCell>
+                <TableCell>Gender</TableCell>
+                <TableCell>Age</TableCell>
+                <TableCell>Actions</TableCell>
             </TableRow>
         </TableHead>
     </Table>
