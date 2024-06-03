@@ -41,6 +41,8 @@ const handleUpdate =(id)=>{
     etFormData({ id: null, name: '', gender: '', age: '' });
 }
 
-
+const handleChange =()=>{
+    
+}
 
 }
