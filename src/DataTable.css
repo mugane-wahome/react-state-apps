@@ -18,3 +18,8 @@
     text-align: center;
     border: 1px solid #f0a500;
   }
+
+  /* Table body styling */
+.MuiTableBody-root {
+    background-color: #fff7e6;
+  }
